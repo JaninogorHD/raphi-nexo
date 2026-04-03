@@ -3,39 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNSER REICH - RAPHI & NEXO 👨‍❤️‍👨</title>
+    <title>UNSER REICH - RAPHI & NEXO 👑</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@200;400;600;800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     
     <style>
-        /* =========================================
-           1. CSS VARIABLEN & GRUNDEINSTELLUNGEN
-           ========================================= */
         :root {
             --primary-love: #ff4757; 
             --accent-gold: #f1c40f;
-            --glass-bg: rgba(0, 0, 0, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 0 20px rgba(255, 71, 87, 0.3);
             
-            /* Dunkle, majestätische Hintergrundfarben */
             --gradient-1: #0f0c29; 
             --gradient-2: #302b63; 
             --gradient-3: #24243e; 
-            --gradient-4: #1a1a2e; 
         }
+
+        html { scroll-behavior: smooth; }
 
         * {
             box-sizing: border-box;
-            cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym833.cur'), auto;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             margin: 0; padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3), var(--gradient-4));
+            background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #eeeeee;
+            color: #ffffff;
             overflow-x: hidden;
             min-height: 100vh;
         }
@@ -46,572 +44,352 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Eigener Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
         ::-webkit-scrollbar-thumb {
             background: var(--primary-love);
             border-radius: 10px;
         }
 
-        /* =========================================
-           2. ANIMIERTER LOGIN (HIGH-END)
-           ========================================= */
+        /* --- LOGIN --- */
         #login-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+            inset: 0;
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            overflow: hidden;
-            transition: opacity 1.5s ease, visibility 1.5s ease;
-        }
-
-        .login-aura {
-            position: absolute;
-            width: 400px; height: 400px;
-            background: var(--primary-love);
-            filter: blur(150px);
-            opacity: 0.15;
-            border-radius: 50%;
-            animation: pulseAura 8s infinite alternate;
-        }
-
-        @keyframes pulseAura {
-            from { transform: scale(1) translate(-10%, -10%); opacity: 0.1; }
-            to { transform: scale(1.3) translate(10%, 10%); opacity: 0.3; }
+            z-index: 10000;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .login-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px) saturate(150%);
-            -webkit-backdrop-filter: blur(30px);
-            padding: 50px 40px;
+            backdrop-filter: blur(25px);
+            padding: 60px 40px;
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             text-align: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05);
-            max-width: 420px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+            max-width: 400px;
             width: 90%;
-            position: relative;
-            z-index: 10;
-            animation: slideIn 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .login-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-            display: inline-block;
-            filter: drop-shadow(0 0 10px var(--primary-love));
-            animation: heartBeat 2s infinite;
-        }
-
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .login-card h2 {
-            font-family: 'Oswald', sans-serif;
-            color: #fff;
-            font-size: 2.5em;
-            margin: 0 0 10px 0;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .login-card p {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9em;
-            margin-bottom: 30px;
         }
 
         .login-card input {
             width: 100%;
-            padding: 18px 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            color: #fff;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            transition: all 0.3s;
-            text-align: center;
-            letter-spacing: 2px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            color: white;
+            font-size: 1.2rem;
+            margin: 20px 0;
             outline: none;
+            text-align: center;
+            transition: 0.3s;
         }
 
-        .login-card input:focus {
-            border-color: var(--primary-love);
-            background: rgba(0, 0, 0, 0.6);
-            box-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
-            transform: scale(1.02);
-        }
+        .login-card input:focus { border-color: var(--primary-love); box-shadow: var(--shadow-glow); }
 
         .btn-login {
             width: 100%;
-            padding: 18px;
-            border-radius: 20px;
+            padding: 15px;
+            border-radius: 15px;
             border: none;
-            background: linear-gradient(45deg, var(--primary-love), #6c5ce7);
+            background: var(--primary-love);
             color: white;
-            font-weight: 800;
-            font-size: 1.1em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+            transition: 0.3s;
+            text-transform: uppercase;
         }
 
-        .btn-login:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 71, 87, 0.6);
-            filter: brightness(1.1);
+        .btn-login:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        /* --- MAIN APP --- */
+        #app { padding-bottom: 100px; }
+
+        header {
+            padding: 150px 20px 80px;
+            text-align: center;
         }
 
-        .shake { animation: shake 0.4s ease-in-out; }
+        .main-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: clamp(3rem, 15vw, 8rem);
+            margin: 0;
+            background: linear-gradient(to bottom, #ffffff, #a1a1a1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
+        }
+
+        /* --- TIMER --- */
+        .countdown-section {
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .timer-unit {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 25px;
+            min-width: 140px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-love);
+        }
+
+        .timer-unit span {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+        }
+
+        /* --- CARDS --- */
+        .profiles {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 20px;
+            perspective: 1500px;
+        }
+
+        .card {
+            width: 350px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 35px;
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transform: translateZ(50px);
+        }
+
+        .img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        .card h3 { 
+            font-family: 'Oswald'; 
+            font-size: 2.2rem; 
+            color: var(--accent-gold); 
+            transform: translateZ(30px);
+        }
+
+        /* --- MASONRY GALLERY --- */
+        .gallery-container { max-width: 1200px; margin: 100px auto; padding: 0 20px; }
+        .masonry { column-count: 3; column-gap: 20px; }
+        .masonry-item { 
+            margin-bottom: 20px; 
+            break-inside: avoid; 
+            border-radius: 20px; 
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: 0.4s;
+        }
+        .masonry-item:hover { transform: translateY(-10px); border-color: var(--primary-love); }
+        .masonry-item img { width: 100%; display: block; }
+
+        /* --- CONTROLS --- */
+        .music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1DB954;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .particle {
+            position: fixed;
+            top: -50px;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-10px); }
             75% { transform: translateX(10px); }
         }
+        .shake { animation: shake 0.4s ease-in-out; }
 
-        /* =========================================
-           3. HAUPTSEITE & EFFEKTE
-           ========================================= */
-        
-        /* Partikel Regen */
-        .particle {
-            position: fixed;
-            top: -10%;
-            z-index: 0;
-            user-select: none;
-            pointer-events: none;
-            animation: fall linear forwards;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
-        }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-
-        /* Seiten-Symbole */
-        .side-icons {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            font-size: 2.8em;
-            z-index: 100;
-            pointer-events: none;
-            opacity: 0.6;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-        }
-        .side-icons.left { left: 30px; animation: floatLeft 5s ease-in-out infinite; }
-        .side-icons.right { right: 30px; animation: floatRight 5s ease-in-out infinite; }
-        @keyframes floatLeft { 0%, 100% { transform: translateY(-52%); } 50% { transform: translateY(-48%); } }
-        @keyframes floatRight { 0%, 100% { transform: translateY(-48%); } 50% { transform: translateY(-52%); } }
-
-        /* Header */
-        header { padding: 120px 20px 60px; text-align: center; position: relative; z-index: 10; }
-        
-        .main-title {
-            font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 8em;
-            margin: 0;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
-        }
-
-        #typewriter-text {
-            font-size: 1.8em;
-            opacity: 0.9;
-            min-height: 40px; /* Platzhalter, damit es nicht springt */
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-top: 10px;
-        }
-        .cursor { animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* Countdown */
-        .countdown-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 50px;
-            margin: 0 auto 60px;
-            max-width: 950px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 10;
-        }
-
-        .timer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .timer-unit {
-            background: rgba(255,255,255,0.03);
-            padding: 35px;
-            border-radius: 30px;
-            border-bottom: 4px solid var(--primary-love);
-            text-align: center;
-        }
-
-        .timer-unit span {
-            display: block;
-            font-size: 4.5em;
-            font-family: 'Oswald', sans-serif;
-            color: var(--accent-gold);
-            text-shadow: 0 0 15px rgba(241, 196, 15, 0.4);
-            line-height: 1.1;
-        }
-
-        .timer-unit label {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.9em;
-            opacity: 0.7;
-        }
-
-        /* 3D Profil Karten */
-        .profiles { 
-            display: flex; 
-            justify-content: center; 
-            gap: 60px; 
-            padding: 20px; 
-            flex-wrap: wrap; 
-            perspective: 1000px; /* Wichtig für 3D Effekt */
-            position: relative;
-            z-index: 10;
-        }
-
-        .card {
-            width: 380px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid var(--glass-border);
-            color: white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            transform-style: preserve-3d; /* Für inneres 3D */
-            transition: transform 0.1s; /* Sehr schnelle Transition für flüssige Maus-Folge */
-        }
-
-        .img-container {
-            width: 100%;
-            height: 380px;
-            border-radius: 30px;
-            overflow: hidden;
-            margin-bottom: 25px;
-            border: 5px solid rgba(255,255,255,0.1);
-            transform: translateZ(30px); /* Bild schwebt in der Karte */
-        }
-
-        .img-container img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            transition: transform 0.6s ease;
-        }
-        .card:hover .img-container img { transform: scale(1.1); }
-
-        .card h3 { 
-            font-family: 'Oswald', sans-serif; 
-            font-size: 2.8em; 
-            color: var(--accent-gold); 
-            margin: 15px 0; 
-            transform: translateZ(40px); /* Text schwebt */
-            text-transform: uppercase;
-        }
-
-        .card p { 
-            transform: translateZ(20px); 
-            line-height: 1.6; 
-            font-weight: 300; 
-        }
-        
-        .card .icon-3d {
-            font-size: 2.5em;
-            margin-top: 20px;
-            transform: translateZ(50px);
-        }
-
-        /* Galerie */
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .masonry {
-            column-count: 3;
-            column-gap: 30px;
-        }
-
-        .masonry-item {
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 25px;
-            border: 1px solid var(--glass-border);
-            margin-bottom: 30px;
-            break-inside: avoid;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .masonry-item img {
-            width: 100%;
-            border-radius: 15px;
-            display: block;
-        }
-
-        .masonry-item:hover {
-            transform: scale(1.05) translateY(-10px);
-            border-color: var(--primary-love);
-            box-shadow: 0 20px 40px rgba(255, 71, 87, 0.2);
-        }
-
-        /* Musik Player Button */
-        .music-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 30px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.2em;
-            cursor: pointer;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s;
-        }
-        .music-toggle:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
-
-        /* Footer */
-        footer {
-            background: rgba(0,0,0,0.8);
-            padding: 80px 20px;
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
-            position: relative;
-            z-index: 10;
-        }
-
-        @media (max-width: 900px) {
-            .masonry { column-count: 2; }
-            .side-icons { display: none; }
-        }
-        @media (max-width: 600px) {
-            .main-title { font-size: 4em; }
+        @media (max-width: 768px) {
             .masonry { column-count: 1; }
-            .timer-container { grid-template-columns: repeat(2, 1fr); }
-            #typewriter-text { font-size: 1.2em; }
+            .profiles { gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="side-icons left">
-        <div>👨‍❤️‍👨</div>
-        <div>⚡</div>
-        <div>♾️</div>
-        <div>👑</div>
-    </div>
-    <div class="side-icons right">
-        <div>👬</div>
-        <div>✨</div>
-        <div>💎</div>
-        <div>💪</div>
-    </div>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <div id="particle-rain"></div>
 
     <div id="login-overlay">
-        <div class="login-aura"></div>
         <div class="login-card" id="login-box">
-            <div class="login-icon">👨‍❤️‍👨</div>
-            <h2>Eintreten</h2>
-            <p>Nur für Raphi & Nexo reserviert</p>
-            
+            <div style="font-size: 50px; margin-bottom: 10px;">👑</div>
+            <h2 style="font-family: 'Oswald'; letter-spacing: 3px;">EINTRITT</h2>
+            <p style="opacity: 0.6;">Zwei Könige, eine Website.</p>
             <input type="password" id="pw-input" placeholder="PASSWORT">
-            
-            <button class="btn-login" onclick="verify()">Herz öffnen ✨</button>
-            
-            <div id="err" style="display:none; color: var(--primary-love); margin-top: 20px; font-weight: 600;">
-                Falscher Code, Bro! ❤️
-            </div>
+            <button class="btn-login" onclick="verify()">Öffnen ✨</button>
+            <div id="err" style="display:none; color: var(--primary-love); margin-top: 15px;">Versuchs nochmal, Bro! ❤️</div>
         </div>
     </div>
 
     <div id="app" style="display: none;">
-        
         <header>
             <h1 class="main-title">Raphi & Nexo</h1>
-            <div id="typewriter-text"><span id="tw-text"></span><span class="cursor">|</span></div>
+            <div id="typewriter-text" style="font-size: 1.5rem; letter-spacing: 5px; margin-top: 20px;">
+                <span id="tw-text"></span><span style="animation: blink 1s infinite;">|</span>
+            </div>
         </header>
 
         <div class="countdown-section">
-            <div class="timer-container">
-                <div class="timer-unit"><span id="d">00</span><label>Tage</label></div>
-                <div class="timer-unit"><span id="h">00</span><label>Stunden</label></div>
-                <div class="timer-unit"><span id="m">00</span><label>Minuten</label></div>
-                <div class="timer-unit"><span id="s">00</span><label>Sekunden</label></div>
-            </div>
+            <div class="timer-unit"><span id="d">00</span><label>Tage</label></div>
+            <div class="timer-unit"><span id="h">00</span><label>Stunden</label></div>
+            <div class="timer-unit"><span id="m">00</span><label>Minuten</label></div>
+            <div class="timer-unit"><span id="s">00</span><label>Sekunden</label></div>
         </div>
 
-
-
-
-
-
-
-        
-          
-           <div class="profiles">
+        <div class="profiles">
             <div class="card tilt-card">
-                <div class="img-container"><img src="Raphi3.png" alt="Mein Raphi"></div>
+                <div class="img-container"><img src="Raphi3.png" alt="Raphi"></div>
                 <h3>Raphi 👑</h3>
-                <p>Du bist mein Fels und mein Stolz. An deiner Seite bin ich unbesiegbar. Ich liebe dich grenzenlos!</p>
-                <div class="icon-3d">👨‍❤️‍👨</div>
+                <p>Mein Fels. Mein Stolz. Mein König.</p>
             </div>
-
             <div class="card tilt-card">
-                <div class="img-container"><img src="Nexo.png"></div>
+                <div class="img-container"><img src="Nexo.png" alt="Nexo"></div>
                 <h3>Nexo 👑</h3>
-                <p>Jeder Tag mit dir ist ein Gewinn. Danke für alles, was du bist. Du bist mein Ein und Alles.</p>
-                <div class="icon-3d">👬</div>
+                <p>Mein Ein und Alles. Jeden Tag aufs Neue.</p>
             </div>
         </div>
 
         <div class="gallery-container">
-            <h2 style="font-family: 'UnifrakturMaguntia'; font-size: 5em; text-align: center; margin-bottom: 50px; text-shadow: 0 0 20px rgba(0,0,0,0.5);">Momente</h2>
+            <h2 style="font-family: 'UnifrakturMaguntia'; font-size: 4rem; text-align: center; margin-bottom: 50px;">Unsere Momente</h2>
             <div class="masonry">
                 <div class="masonry-item"><img src="Raphi2.png"></div>
-                <div class="masonry-item"><img src="Nexo2.png"></div>
-                <div class="masonry-item"><img src="Raphi3.png"></div> <div class="masonry-item"><img src="Nexo3.png"></div>
-                
-                <div class="masonry-item"><img src="2AF92BE7-BDA8-4DD8-B296-3A20311CEA85.jpg"></div>
                 <div class="masonry-item"><img src="20260331_102945.jpg"></div>
-                <div class="masonry-item"><img src="20260331_102953.jpg"></div>
-                <div class="masonry-item"><img src="20260331_103008.jpg"></div>
-                <div class="masonry-item"><img src="20260331_103010.jpg"></div>
-                <div class="masonry-item"><img src="20260331_103013.jpg"></div>
-                <div class="masonry-item"><img src="20260331_103020.jpg"></div>
-            </div>
+                <div class="masonry-item"><img src="Nexo2.png"></div>
+                </div>
         </div>
 
-
-
-
-
-        
-
-
-        <footer>
-            <p style="font-family: 'UnifrakturMaguntia'; font-size: 3em; margin:0">Ewig Uns.</p>
-            <div style="font-size: 2.5em; margin: 20px 0; animation: heartBeat 2s infinite;">♾️ 👨‍❤️‍👨 ♾️</div>
-            <p style="opacity: 0.5; font-size: 0.9em; margin-top: 30px;">Für meinen Raphi - 27. Juli 2026</p>
+        <footer style="text-align: center; padding: 100px 20px;">
+            <p style="font-family: 'UnifrakturMaguntia'; font-size: 3rem;">Ewig Uns.</p>
+            <p style="opacity: 0.4;">27. Juli 2026</p>
         </footer>
 
-        <a href="https://open.spotify.com/playlist/14R7i2KnIeKVx2HkbYVOkZ?si=4ijPhKyeRDafcksHCxKJYA&pi=8-tcXTN2St-ee" target="_blank" class="music-toggle" style="text-decoration: none; background: #1DB954; border-color: #1ed760; color: white;">
-            🎧 Unsere Playlist
+        <a href="#" onclick="toggleMusic()" class="music-toggle" id="music-btn">
+            🎧 Musik an
         </a>
-
     </div>
 
     <script>
-        /* --- 1. LOGIN & SECURITY --- */
+        // 1. Passwort Logik
         function verify() {
             const val = document.getElementById('pw-input').value.trim();
             const box = document.getElementById('login-box');
             
-            // Base64 für "Raphi@2026"
             if (btoa(val) === "UmFwaGlAMjAyNg==") {
                 document.getElementById('login-overlay').style.opacity = '0';
-                document.getElementById('login-overlay').style.visibility = 'hidden';
                 setTimeout(() => {
                     document.getElementById('login-overlay').style.display = 'none';
                     document.getElementById('app').style.display = 'block';
-                    startMagic(); // Startet alle Effekte
+                    startEverything();
                 }, 1000);
             } else {
-                box.classList.remove('shake');
-                void box.offsetWidth; // Trigger Reflow für erneute Animation
                 box.classList.add('shake');
                 document.getElementById('err').style.display = 'block';
+                setTimeout(() => box.classList.remove('shake'), 400);
             }
         }
 
-        // Enter Taste
-        document.getElementById('pw-input').addEventListener('keypress', (e) => {
-            if(e.key === 'Enter') verify();
-        });
-
-        /* --- 2. START MAGIC (Wird nach Login ausgeführt) --- */
-        function startMagic() {
-            startRain();
-            updateTimer();
+        // 2. Start-Sequenz
+        function startEverything() {
+            initParticles();
+            initTypewriter();
+            initTilt();
             setInterval(updateTimer, 1000);
-            initTiltEffect();
-            typeWriter();
-            
-            // Versuch, Musik automatisch zu starten (Browser blockieren das oft, daher der Button)
-            document.getElementById('bg-music').play().catch(e => console.log("Audio Autoplay blockiert."));
         }
 
-        /* --- 3. ERWEITERTER PARTIKEL REGEN --- */
-        function startRain() {
+        // 3. Partikel Effekt
+        function initParticles() {
             const container = document.getElementById('particle-rain');
-            // Jungs Edition + Namen
-            const icons = ['❤️', '⚡', '✨', '👑', '💎', 'Raphi', 'Nexo', 'Ewig'];
+            const icons = ['❤️', '✨', '👑', '💎', '🔥'];
             
             setInterval(() => {
                 const p = document.createElement('div');
                 p.className = 'particle';
-                const text = icons[Math.floor(Math.random() * icons.length)];
-                p.innerHTML = text;
-                
+                p.innerHTML = icons[Math.floor(Math.random() * icons.length)];
                 p.style.left = Math.random() * 100 + 'vw';
-                // Wenn es ein Wort ist, mach es etwas kleiner, Emojis größer
-                if(text.length > 2) {
-                    p.style.fontSize = (Math.random() * 10 + 15) + 'px';
-                    p.style.color = "rgba(255, 255, 255, 0.4)";
-                } else {
-                    p.style.fontSize = (Math.random() * 25 + 15) + 'px';
-                }
-                
-                p.style.animationDuration = (Math.random() * 4 + 6) + 's'; // Fällt 6-10 Sekunden
-                p.style.opacity = Math.random() * 0.5 + 0.1;
-                
+                p.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                p.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                p.style.opacity = Math.random();
                 container.appendChild(p);
-                setTimeout(() => p.remove(), 10000); // Aufräumen
-            }, 300); 
+                setTimeout(() => p.remove(), 8000);
+            }, 400);
         }
 
-        /* --- 4. COUNTDOWN --- */
+        // 4. Typewriter
+        function initTypewriter() {
+            const text = "Zwei Könige. Eine Liebe. Ewig.";
+            let i = 0;
+            const target = document.getElementById("tw-text");
+            function type() {
+                if (i < text.length) {
+                    target.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                }
+            }
+            type();
+        }
+
+        // 5. Tilt Effekt (Desktop)
+        function initTilt() {
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    card.style.transform = `perspective(1000px) rotateY(${x * 20}deg) rotateX(${y * -20}deg) scale3d(1.05, 1.05, 1.05)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        // 6. Timer
         function updateTimer() {
             const target = new Date("July 27, 2026 00:00:00").getTime();
             const now = new Date().getTime();
@@ -622,62 +400,21 @@
                 document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
                 document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
                 document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            } else {
-                document.querySelector('.countdown-section').innerHTML = "<h2 style='font-size:5em; text-align:center; font-family:Oswald; margin:0'>WIR HABEN UNS! ❤️</h2>";
             }
         }
 
-        /* --- 5. TYPEWRITER EFFEKT FÜR UNTERTITEL --- */
-        const textToType = "Zwei Könige. Eine Liebe. Ewig.";
-        let i = 0;
-        function typeWriter() {
-            if (i < textToType.length) {
-                document.getElementById("tw-text").innerHTML += textToType.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100); // Geschwindigkeit beim Tippen
-            }
-        }
-
-        /* --- 6. 3D TILT EFFEKT FÜR DIE KARTEN --- */
-        function initTiltEffect() {
-            const cards = document.querySelectorAll('.tilt-card');
-            
-            cards.forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left; // x position in Karte
-                    const y = e.clientY - rect.top;  // y position in Karte
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    // Berechne Neigung (je weiter weg von der Mitte, desto stärker)
-                    const rotateX = ((y - centerY) / centerY) * -15; // Max 15 Grad Neigung
-                    const rotateY = ((x - centerX) / centerX) * 15;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                });
-                
-                // Wenn die Maus die Karte verlässt, zurücksetzen
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                });
-            });
-        }
-
-        /* --- 7. MUSIK TOGGLE --- */
+        // 7. Musik Toggle
         function toggleMusic() {
             const audio = document.getElementById('bg-music');
             const btn = document.getElementById('music-btn');
-            
             if (audio.paused) {
                 audio.play();
-                btn.innerHTML = '⏸️ Pause';
-                btn.style.borderColor = 'var(--primary-love)';
+                btn.innerHTML = "⏸️ Pause";
+                btn.style.background = "#ff4757";
             } else {
                 audio.pause();
-                btn.innerHTML = '🎵 Play';
-                btn.style.borderColor = 'var(--glass-border)';
+                btn.innerHTML = "🎧 Musik an";
+                btn.style.background = "#1DB954";
             }
         }
     </script>
