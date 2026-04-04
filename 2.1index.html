@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNSER REICH - RAPHI & NEXO 👨‍❤️‍👨</title>
+    
+    <!-- Majestätische Schriftarten von Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Great+Vibes&family=Oswald:wght@300;500;700&family=Poppins:wght@200;300;400;600;800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           1. CSS VARIABLEN & GRUNDEINSTELLUNGEN
+           ========================================= */
+        :root {
+            /* Farbpalette */
+            --primary-love: #e11d48; /* Tiefes Rubinrot */
+            --primary-glow: rgba(225, 29, 72, 0.6);
+            --accent-gold: #d4af37; /* Royal Gold */
+            --accent-gold-glow: rgba(212, 175, 55, 0.4);
+            --bg-dark: #0a0514; /* Sehr tiefes Violett-Schwarz */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(20, 15, 35, 0.4);
+            --glass-bg-hover: rgba(30, 20, 50, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-highlight: rgba(212, 175, 55, 0.3);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+            
+            /* Verläufe */
+            --gradient-royal: linear-gradient(135deg, #2e0821 0%, #0a0514 50%, #111827 100%);
+            --gradient-gold: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            
+            /* Fonts */
+            --font-royal: 'UnifrakturMaguntia', cursive;
+            --font-elegant: 'Cinzel', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-modern: 'Poppins', sans-serif;
+            --font-display: 'Oswald', sans-serif;
+        }
+
+        /* Reset & Basis */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym833.cur'), auto;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-modern);
+            background: var(--bg-dark);
+            background-image: var(--gradient-royal);
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Eigener Scrollbar - Royal Edition */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #05020a; border-left: 1px solid var(--glass-border); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary-love), #4c0519);
+            border-radius: 10px;
+            border: 2px solid #05020a;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-love); }
+
+        /* Text Selektion */
+        ::selection {
+            background: var(--primary-love);
+            color: white;
+            text-shadow: none;
+        }
+
+        /* Interaktiver Canvas Hintergrund */
+        #magic-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Globale Wrapper für Content über dem Canvas */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* =========================================
+           2. TYPOGRAFIE & DEKORATIONEN
+           ========================================= */
+        h1, h2, h3, h4 {
+            font-weight: normal;
+        }
+
+        .section-title {
+            font-family: var(--font-royal);
+            font-size: clamp(3rem, 6vw, 5rem);
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.2));
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-family: var(--font-elegant);
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        /* Königliche Teiler (Ornate Dividers) */
+        .ornate-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0 80px;
+            opacity: 0.7;
+        }
+        .ornate-divider::before, .ornate-divider::after {
+            content: '';
+            height: 1px;
+            width: 150px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+        }
+        .ornate-divider svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--accent-gold);
+            margin: 0 20px;
+            filter: drop-shadow(0 0 5px var(--accent-gold-glow));
+        }
+
+        /* =========================================
+           3. LOGIN PORTAL (Das Tor zum Reich)
+           ========================================= */
+        #login-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: all 2s cubic-bezier(0.8, 0, 0.2, 1);
+            perspective: 1000px;
+        }
+
+        .login-bg-video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #2e0821 0%, #000000 100%);
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        /* Magische Ringe */
+        .magic-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            animation: spin linear infinite;
+            pointer-events: none;
+        }
+        .ring-1 { width: 600px; height: 600px; border-top-color: var(--accent-gold); animation-duration: 20s; }
+        .ring-2 { width: 800px; height: 800px; border-bottom-color: var(--primary-love); animation-duration: 30s; animation-direction: reverse; }
+        .ring-3 { width: 1000px; height: 1000px; border-left-color: rgba(255,255,255,0.2); animation-duration: 40s; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .login-card {
+            background: rgba(10, 5, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 60px 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            box-shadow: 0 0 100px rgba(0,0,0,1), inset 0 0 30px rgba(212, 175, 55, 0.05);
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: floatPortal 6s ease-in-out infinite;
+        }
+
+        @keyframes floatPortal {
+            0%, 100% { transform: translateY(0) rotateX(2deg); }
+            50% { transform: translateY(-15px) rotateX(-2deg); }
+        }
+
+        .login-crown {
+            width: 80px;
+            margin-bottom: 20px;
+            fill: var(--accent-gold);
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+            animation: pulseCrown 3s infinite alternate;
+        }
+
+        @keyframes pulseCrown {
+            from { filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3)); transform: scale(1); }
+            to { filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.8)); transform: scale(1.05); }
+        }
+
+        .login-card h2 {
+            font-family: var(--font-elegant);
+            color: var(--accent-gold);
+            font-size: 2.2em;
+            margin: 0 0 15px 0;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .login-card p {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin-bottom: 40px;
+            font-family: var(--font-modern);
+            font-weight: 300;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            color: #fff;
+            font-family: var(--font-elegant);
+            font-size: 1.2em;
+            transition: all 0.4s;
+            text-align: center;
+            letter-spacing: 4px;
+            outline: none;
+        }
+
+        .login-card input:focus {
+            border-bottom-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.05);
+            letter-spacing: 6px;
+        }
+
+        .input-glow {
+            position: absolute;
+            bottom: 0; left: 50%;
+            width: 0; height: 2px;
+            background: var(--accent-gold);
+            transition: all 0.4s;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--accent-gold);
+        }
+        .login-card input:focus ~ .input-glow { width: 100%; }
+
+        .btn-login {
+            width: 100%;
+            padding: 18px;
+            border-radius: 5px;
+            border: 1px solid var(--accent-gold);
+            background: transparent;
+            color: var(--accent-gold);
+            font-family: var(--font-elegant);
+            font-weight: 600;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--accent-gold);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-login:hover {
+            color: #000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        .btn-login:hover::before { left: 0; }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); border-color: var(--primary-love); }
+            30%, 50%, 70% { transform: translate3d(-8px, 0, 0); }
+            40%, 60% { transform: translate3d(8px, 0, 0); }
+        }
+
+        /* =========================================
+           4. HAUPTSEITE - HEADER & HERO
+           ========================================= */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .main-title {
+            font-family: var(--font-royal);
+            font-size: clamp(4rem, 10vw, 9rem);
+            margin: 0;
+            line-height: 1.1;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+            animation: titleReveal 2s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes titleReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #typewriter-text {
+            font-family: var(--font-elegant);
+            font-size: clamp(1.2rem, 3vw, 2.2rem);
+            color: var(--accent-gold);
+            margin-top: 20px;
+            min-height: 50px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .cursor { 
+            animation: blink 1s infinite; 
+            color: var(--primary-love);
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .scroll-indicator:hover { opacity: 1; }
+        .scroll-text {
+            font-family: var(--font-elegant);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .mouse {
+            width: 30px; height: 50px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 15px;
+            position: relative;
+        }
+        .wheel {
+            width: 4px; height: 8px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+            position: absolute;
+            top: 10px; left: 50%;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s infinite;
+        }
+        @keyframes scrollWheel {
+            0% { top: 10px; opacity: 1; }
+            100% { top: 30px; opacity: 0; }
+        }
+
+        /* =========================================
+           5. COUNTDOWN SEKTION
+           ========================================= */
+        .countdown-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .countdown-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dekorative Ecken im Countdown */
+        .corner-deco {
+            position: absolute;
+            width: 60px; height: 60px;
+            border: 2px solid var(--accent-gold);
+            opacity: 0.3;
+        }
+        .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .corner-tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+        .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+        .timer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timer-unit {
+            background: rgba(0,0,0,0.4);
+            padding: 40px 20px;
+            border-radius: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 3px solid var(--primary-love);
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .timer-unit:hover { transform: translateY(-5px); border-bottom-color: var(--accent-gold); }
+
+        .timer-unit span {
+            display: block;
+            font-size: clamp(3rem, 5vw, 5.5rem);
+            font-family: var(--font-display);
+            color: var(--text-main);
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
+            line-height: 1;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .timer-unit label {
+            font-family: var(--font-elegant);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+        }
+
+        /* =========================================
+           6. 3D PROFIL KARTEN (Die Könige)
+           ========================================= */
+        .kings-section {
+            padding: 100px 0;
+        }
+
+        .profiles { 
+            display: flex; 
+            justify-content: center; 
+            gap: 80px; 
+            flex-wrap: wrap; 
+            perspective: 2000px;
+        }
+
+        .card {
+            width: 420px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            transform-style: preserve-3d; 
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 30px;
+            box-shadow: inset 0 0 0 1px var(--glass-border-highlight);
+            transform: translateZ(10px);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 40px rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 2px solid rgba(255,255,255,0.05);
+            transform: translateZ(50px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            position: relative;
+        }
+        
+        .img-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none;
+        }
+
+        .img-container img { 
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .card:hover .img-container img { transform: scale(1.08); }
+
+        .card h3 { 
+            font-family: var(--font-royal); 
+            font-size: 4rem; 
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0; 
+            transform: translateZ(70px);
+            line-height: 1;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Soft shadow for text */
+        }
+
+        .card p { 
+            transform: translateZ(40px); 
+            line-height: 1.8; 
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-top: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .card .icon-3d {
+            font-size: 3rem;
+            margin-top: 30px;
+            transform: translateZ(60px);
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+        }
+
+        /* =========================================
+           7. TIMELINE (Unsere Reise)
+           ========================================= */
+        .timeline-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* Die zentrale Linie */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, transparent, var(--accent-gold), var(--primary-love), var(--accent-gold), transparent);
+            top: 0; bottom: 0; left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0; /* Für Scroll Animation */
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        .timeline-item.visible { opacity: 1; transform: translateY(0); }
+
+        .timeline-item:nth-child(odd) { left: 0; }
+        .timeline-item:nth-child(even) { left: 50%; }
+
+        /* Der Punkt auf der Linie */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            right: -10px;
+            background-color: var(--bg-dark);
+            border: 4px solid var(--accent-gold);
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px var(--accent-gold);
+        }
+        .timeline-item:nth-child(even)::after { left: -10px; }
+
+        .timeline-content {
+            padding: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .timeline-content:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
+        }
+
+        .timeline-date {
+            font-family: var(--font-elegant);
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .timeline-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* =========================================
+           8. LIEBESBRIEFE (Interaktive Umschläge)
+           ========================================= */
+        .letters-section {
+            padding: 100px 0;
+            background: radial-gradient(circle at center, rgba(225, 29, 72, 0.05) 0%, transparent 70%);
+        }
+
+        .letters-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .envelope {
+            width: 100%; height: 100%;
+            background: #1a0f26;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .envelope-wrapper:hover .envelope { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.8); border-color: var(--primary-love); }
+
+        .envelope-icon { font-size: 3rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(225,29,72,0.5)); }
+        .envelope-title { font-family: var(--font-elegant); color: var(--accent-gold); letter-spacing: 2px; }
+
+        /* Das Innere des Briefes (Modal-ähnlich) */
+        .letter-content {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: #fff;
+            color: #111;
+            padding: 60px 40px;
+            width: 90%; max-width: 600px;
+            border-radius: 5px;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background-image: url('https://www.transparenttextures.com/patterns/old-wall.png'); /* Papier Textur */
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+        .letter-content.active {
+            opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .letter-content::before {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid #d4af37; pointer-events: none; opacity: 0.5;
+        }
+
+        .letter-text {
+            font-family: var(--font-script);
+            font-size: 2.2rem;
+            line-height: 1.6;
+            text-align: center;
+            color: #2e0821;
+        }
+
+        .letter-close {
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; font-size: 2rem;
+            color: #888; cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+            z-index: 9999; opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .overlay.active { opacity: 1; visibility: visible; }
+
+        /* =========================================
+           9. GALERIE (Masonry mit Lightbox)
+           ========================================= */
+        .gallery-section { padding: 100px 0; }
+
+        .masonry {
+            column-count: 3;
+            column-gap: 30px;
+        }
+
+        .masonry-item {
+            background: var(--glass-bg);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 30px;
+            break-inside: avoid;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            cursor: zoom-in;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .masonry-item::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 3rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+            z-index: 2;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212,175,55,0.2);
+        }
+        .masonry-item:hover img { transform: scale(1.05); filter: brightness(0.7); }
+        .masonry-item:hover::after { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
+            z-index: 100000; display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: 0.4s ease;
+        }
+        #lightbox.active { opacity: 1; visibility: visible; }
+        #lightbox img {
+            max-width: 90%; max-height: 90vh;
+            border-radius: 10px; box-shadow: 0 0 50px rgba(255,255,255,0.1);
+            border: 2px solid var(--glass-border);
+            transform: scale(0.9); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        #lightbox.active img { transform: scale(1); }
+        .lightbox-close {
+            position: absolute; top: 30px; right: 40px;
+            color: #fff; font-size: 3rem; font-family: sans-serif; cursor: pointer;
+            transition: 0.3s;
+        }
+        .lightbox-close:hover { color: var(--primary-love); transform: rotate(90deg); }
+
+
+        /* =========================================
+           10. UNSERE TRÄUME (Bucketlist)
+           ========================================= */
+        .dreams-section { padding: 100px 0; }
+        
+        .dreams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dream-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s;
+        }
+        .dream-card:hover { background: rgba(255,255,255,0.05); transform: translateX(10px); border-color: var(--primary-love); }
+
+        .dream-checkbox {
+            width: 30px; height: 30px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.2rem; color: transparent; transition: 0.3s;
+        }
+        .dream-card.done .dream-checkbox { background: var(--accent-gold); color: #000; }
+        .dream-text { font-family: var(--font-modern); font-size: 1.2rem; font-weight: 300; }
+        .dream-card.done .dream-text { text-decoration: line-through; color: var(--text-muted); }
+
+
+        /* =========================================
+           11. FOOTER & FLOATING ELEMENTS
+           ========================================= */
+        footer {
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+            padding: 120px 20px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-title {
+            font-family: var(--font-royal);
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin: 0;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .infinity-heart {
+            font-size: 3rem; margin: 30px 0;
+            animation: pulseAura 3s infinite alternate;
+            filter: drop-shadow(0 0 20px var(--primary-love));
+        }
+
+        .footer-date {
+            font-family: var(--font-elegant);
+            letter-spacing: 5px;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        /* Musik & Seitensymbole */
+        .music-toggle {
+            position: fixed; bottom: 30px; right: 30px;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
+            border: 1px solid #1DB954; color: white;
+            padding: 15px 25px; border-radius: 30px;
+            font-family: var(--font-display); font-size: 1.2rem;
+            cursor: pointer; z-index: 1000; display: flex; align-items: center; gap: 10px;
+            transition: all 0.3s; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .music-toggle:hover { background: #1DB954; transform: scale(1.05) translateY(-5px); box-shadow: 0 15px 30px rgba(29, 185, 84, 0.4); }
+
+        .side-icons {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 30px;
+            font-size: 2.2rem; z-index: 100; pointer-events: none;
+            opacity: 0.3; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+            transition: opacity 0.5s;
+        }
+        .side-icons:hover { opacity: 0.8; }
+        .side-icons.left { left: 40px; animation: floatLeft 6s ease-in-out infinite; }
+        .side-icons.right { right: 40px; animation: floatRight 6s ease-in-out infinite; }
+        @keyframes floatLeft { 0%, 100% { transform: translateY(-55%); } 50% { transform: translateY(-45%); } }
+        @keyframes floatRight { 0%, 100% { transform: translateY(-45%); } 50% { transform: translateY(-55%); } }
+
+
+        /* =========================================
+           12. ANIMATIONS & UTILITIES
+           ========================================= */
+        .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .fade-in.appear { opacity: 1; transform: translateY(0); }
+
+        /* =========================================
+           13. MEDIA QUERIES (Responsive Design)
+           ========================================= */
+        @media (max-width: 1024px) {
+            .masonry { column-count: 2; }
+            .side-icons { display: none; } /* Verstecke auf Tablets/Handys für sauberen Look */
+            .profiles { gap: 40px; }
+        }
+        @media (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; }
+            .timeline-item:nth-child(even) { left: 0; }
+            .timeline-item::after { left: 21px !important; }
+            .card { width: 100%; max-width: 400px; }
+            .letter-content { padding: 40px 20px; }
+            .letter-text { font-size: 1.8rem; }
+        }
+        @media (max-width: 480px) {
+            .masonry { column-count: 1; }
+            .timer-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .timer-unit { padding: 20px 10px; }
+            .timer-unit span { font-size: 2.5rem; }
+            .login-card { padding: 40px 20px; }
+            .music-toggle { bottom: 20px; right: 20px; padding: 10px 15px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. DER MAGISCHE HINTERGRUND -->
+    <canvas id="magic-canvas"></canvas>
+
+    <!-- 2. LOGIN PORTAL -->
+    <div id="login-overlay">
+        <div class="login-bg-video"></div>
+        <div class="magic-ring ring-1"></div>
+        <div class="magic-ring ring-2"></div>
+        <div class="magic-ring ring-3"></div>
+        
+        <div class="login-card" id="login-box">
+            <!-- Vektor Krone anstelle von Emoji für mehr Eleganz -->
+            <svg class="login-crown" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M496 128c-15.6 0-29.2 11.2-31.6 26.6L418.5 400H93.5L47.6 154.6C45.2 139.2 31.6 128 16 128C7.2 128 0 135.2 0 144v16c0 53 43 96 96 96h320c53 0 96-43 96-96v-16C512 135.2 504.8 128 496 128zM413.4 368L456.9 85.3C459.7 67.2 447.1 50.4 429.2 47.6C411.3 44.8 394.5 57.3 391.7 75.3L359.8 282.4L275.6 44.2C269.8 27.6 253.3 17.6 235.6 19.3C217.9 21 204.6 36.3 204.6 54.2L204.6 288L120.3 75.3C117.5 57.3 100.7 44.8 82.8 47.6C64.9 50.4 52.3 67.2 55.1 85.3L98.6 368H413.4z"/>
+            </svg>
+            <h2>Eintreten</h2>
+            <p>Das Reich von Raphi & Nexo ist verschlossen.<br>Nur die wahren Könige kennen den Weg.</p>
+            
+            <div class="input-group">
+                <input type="password" id="pw-input" placeholder="PASSWORT" autocomplete="off">
+                <div class="input-glow"></div>
+            </div>
+            
+            <button class="btn-login" onclick="verify()">Tor Öffnen</button>
+            
+            <div id="err" style="display:none; color: var(--primary-love); margin-top: 25px; font-weight: 600; font-family: var(--font-modern);">
+                Das Siegel bleibt verschlossen. Falsches Passwort.
+            </div>
+        </div>
+    </div>
+
+    <!-- SEITLICHE IKONEN -->
+    <div class="side-icons left">
+        <div>👨‍❤️‍👨</div>
+        <div style="font-size: 1.5rem; opacity: 0.5;">✦</div>
+        <div>♾️</div>
+        <div style="font-size: 1.5rem; opacity: 0.5;">✦</div>
+        <div>👑</div>
+    </div>
+    <div class="side-icons right">
+        <div>👬</div>
+        <div style="font-size: 1.5rem; opacity: 0.5;">✦</div>
+        <div>✨</div>
+        <div style="font-size: 1.5rem; opacity: 0.5;">✦</div>
+        <div>💎</div>
+    </div>
+
+    <!-- 3. HAUPTINHALT (Versteckt bis Login) -->
+    <div id="app" style="display: none;">
+        
+        <!-- HEADER / HERO -->
+        <header class="hero-section">
+            <h1 class="main-title">Raphi & Nexo</h1>
+            <div id="typewriter-text"><span id="tw-text"></span><span class="cursor">|</span></div>
+            
+            <div class="scroll-indicator">
+                <div class="mouse"><div class="wheel"></div></div>
+                <span class="scroll-text">Scrollen</span>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            
+            <!-- COUNTDOWN -->
+            <section class="countdown-section fade-in">
+                <div class="countdown-card">
+                    <!-- Eck-Ornamente -->
+                    <div class="corner-deco corner-tl"></div>
+                    <div class="corner-deco corner-tr"></div>
+                    <div class="corner-deco corner-bl"></div>
+                    <div class="corner-deco corner-br"></div>
+                    
+                    <h2 class="section-title" style="font-size: 3rem; margin-bottom: 40px; text-shadow: none;">Der Tag der Ewigkeit</h2>
+                    <div class="timer-container">
+                        <div class="timer-unit"><span id="d">00</span><label>Tage</label></div>
+                        <div class="timer-unit"><span id="h">00</span><label>Stunden</label></div>
+                        <div class="timer-unit"><span id="m">00</span><label>Minuten</label></div>
+                        <div class="timer-unit"><span id="s">00</span><label>Sekunden</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TRENNER -->
+            <div class="ornate-divider fade-in">
+                <svg viewBox="0 0 512 512"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>
+            </div>
+
+            <!-- PROFIL KARTEN (Die Könige) -->
+            <section class="kings-section fade-in">
+                <h2 class="section-title">Die Herrscher</h2>
+                <h3 class="section-subtitle">Zwei Seelen. Ein Imperium.</h3>
+                
+                <div class="profiles">
+                    <!-- Raphi's Karte -->
+                    <div class="card tilt-card">
+                        <div class="img-container"><img src="Raphi3.png" alt="Raphi"></div>
+                        <h3>Raphi</h3>
+                        <p>Du bist mein Fels und mein Stolz. An deiner Seite bin ich unbesiegbar. Deine Stärke ist mein Schutzschild, deine Liebe mein größter Schatz. Ich liebe dich grenzenlos!</p>
+                        <div class="icon-3d">👑</div>
+                    </div>
+
+                    <!-- Nexo's Karte -->
+                    <div class="card tilt-card">
+                        <div class="img-container"><img src="Nexo.png" alt="Nexo"></div>
+                        <h3>Nexo</h3>
+                        <p>Jeder Tag mit dir ist ein Gewinn. Danke für alles, was du bist. Du bringst das Licht in die dunkelsten Stunden. Du bist mein König, mein Ein und Alles.</p>
+                        <div class="icon-3d">👑</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TRENNER -->
+            <div class="ornate-divider fade-in">
+                <svg viewBox="0 0 512 512"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>
+            </div>
+
+            <!-- TIMELINE -->
+            <section class="timeline-section fade-in">
+                <h2 class="section-title">Unsere Reise</h2>
+                <h3 class="section-subtitle">Wie die Legende begann</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item slide-in">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Das erste Treffen</div>
+                            <h3>Der Funke</h3>
+                            <p>Der Moment, in dem sich unsere Blicke trafen und das Universum entschied, dass unsere Wege von nun an eins sind. Ein Augenblick, der alles veränderte.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item slide-in">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Zusammen Wachsen</div>
+                            <h3>Das Fundament</h3>
+                            <p>Aus einem Funken wurde ein Feuer. Wir haben gelernt, gelacht, manchmal geweint, aber vor allem haben wir gemeinsam unser Reich Stein für Stein aufgebaut.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item slide-in">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Heute</div>
+                            <h3>Unbesiegbar</h3>
+                            <p>Zwei Könige, die sich blind vertrauen. Nichts und niemand kann das Band zerschneiden, das wir geknüpft haben. Wir sind auf dem Höhepunkt unserer Macht.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item slide-in">
+                        <div class="timeline-content">
+                            <div class="timeline-date">27. Juli 2026</div>
+                            <h3>Die Ewigkeit</h3>
+                            <p>Unser Ziel. Unser Tag. Der Moment, ab dem wir für immer besiegeln, was längst in den Sternen geschrieben steht.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIEBESBRIEFE -->
+            <section class="letters-section fade-in">
+                <h2 class="section-title" style="font-size: 4rem;">Geheime Botschaften</h2>
+                <h3 class="section-subtitle">Klicke, um zu öffnen</h3>
+                
+                <div class="letters-container">
+                    <div class="envelope-wrapper" onclick="openLetter(1)">
+                        <div class="envelope">
+                            <div class="envelope-icon">💌</div>
+                            <div class="envelope-title">An meinen König</div>
+                        </div>
+                    </div>
+                    <div class="envelope-wrapper" onclick="openLetter(2)">
+                        <div class="envelope">
+                            <div class="envelope-icon">📜</div>
+                            <div class="envelope-title">Mein Versprechen</div>
+                        </div>
+                    </div>
+                    <div class="envelope-wrapper" onclick="openLetter(3)">
+                        <div class="envelope">
+                            <div class="envelope-icon">🗝️</div>
+                            <div class="envelope-title">Der Schlüssel</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GALERIE -->
+            <section class="gallery-section fade-in">
+                <h2 class="section-title">Erinnerungen</h2>
+                <h3 class="section-subtitle">Eingefangen in der Ewigkeit</h3>
+                
+                <div class="masonry">
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="Raphi2.png" alt="Erinnerung 1"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="Nexo2.png" alt="Erinnerung 2"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="Raphi3.png" alt="Erinnerung 3"></div> 
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="Nexo3.png" alt="Erinnerung 4"></div>
+                    
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="2AF92BE7-BDA8-4DD8-B296-3A20311CEA85.jpg" alt="Erinnerung 5"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="20260331_102945.jpg" alt="Erinnerung 6"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="20260331_102953.jpg" alt="Erinnerung 7"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="20260331_103008.jpg" alt="Erinnerung 8"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="20260331_103010.jpg" alt="Erinnerung 9"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="20260331_103013.jpg" alt="Erinnerung 10"></div>
+                    <div class="masonry-item" onclick="openLightbox(this)"><img src="20260331_103020.jpg" alt="Erinnerung 11"></div>
+                </div>
+            </section>
+
+            <!-- BUCKETLIST (Unsere Träume) -->
+            <section class="dreams-section fade-in">
+                <h2 class="section-title">Unsere Träume</h2>
+                <h3 class="section-subtitle">Was die Zukunft bringt</h3>
+                
+                <div class="dreams-grid">
+                    <div class="dream-card done" onclick="toggleDream(this)">
+                        <div class="dream-checkbox">✓</div>
+                        <div class="dream-text">Uns finden & lieben lernen</div>
+                    </div>
+                    <div class="dream-card" onclick="toggleDream(this)">
+                        <div class="dream-checkbox">✓</div>
+                        <div class="dream-text">Zusammen die Welt bereisen</div>
+                    </div>
+                    <div class="dream-card" onclick="toggleDream(this)">
+                        <div class="dream-checkbox">✓</div>
+                        <div class="dream-text">Ein gemeinsames Schloss (Haus) bauen</div>
+                    </div>
+                    <div class="dream-card" onclick="toggleDream(this)">
+                        <div class="dream-checkbox">✓</div>
+                        <div class="dream-text">Für immer und ewig: 27. Juli 2026</div>
+                    </div>
+                    <div class="dream-card" onclick="toggleDream(this)">
+                        <div class="dream-checkbox">✓</div>
+                        <div class="dream-text">Tausende weitere Erinnerungen schaffen</div>
+                    </div>
+                    <div class="dream-card" onclick="toggleDream(this)">
+                        <div class="dream-checkbox">✓</div>
+                        <div class="dream-text">Zusammen alt und grau werden</div>
+                    </div>
+                </div>
+            </section>
+
+        </div> <!-- End Content Wrapper -->
+
+        <!-- FOOTER -->
+        <footer>
+            <h2 class="footer-title">Ewig Uns.</h2>
+            <div class="infinity-heart">👨‍❤️‍👨</div>
+            <p class="footer-date">Raphi & Nexo - Für die Ewigkeit</p>
+        </footer>
+
+        <!-- SPOTIFY BUTTON -->
+        <a href="https://open.spotify.com/playlist/14R7i2KnIeKVx2HkbYVOkZ?si=4ijPhKyeRDafcksHCxKJYA&pi=8-tcXTN2St-ee" target="_blank" class="music-toggle">
+            🎧 Unsere Playlist
+        </a>
+
+    </div>
+
+    <!-- MODAL OVERLAYS (Versteckt) -->
+    
+    <!-- Brief-Inhalt Modal -->
+    <div class="overlay" id="modal-overlay" onclick="closeLetter()"></div>
+    
+    <div class="letter-content" id="letter-1">
+        <button class="letter-close" onclick="closeLetter()">×</button>
+        <p class="letter-text">"An den Mann, der mir gezeigt hat, was wahre Liebe bedeutet. Bevor du in mein Leben tratst, wusste ich nicht, dass das Herz so viel fühlen kann. Du bist mein Anker im Sturm und mein Sonnenlicht an grauen Tagen. Ich verspreche dir, jeden Tag an deiner Seite zu stehen, wie ein König neben seinem König."</p>
+    </div>
+    
+    <div class="letter-content" id="letter-2">
+        <button class="letter-close" onclick="closeLetter()">×</button>
+        <p class="letter-text">"Ich verspreche dir Treue, Respekt und endlose Leidenschaft. Ich verspreche dir, in guten wie in schlechten Zeiten deine Hand nicht loszulassen. Egal was die Welt uns entgegenwirft, wir stellen uns ihr gemeinsam. Mein Herz gehört dir, für jetzt und für alle Zeiten."</p>
+    </div>
+    
+    <div class="letter-content" id="letter-3">
+        <button class="letter-close" onclick="closeLetter()">×</button>
+        <p class="letter-text">"Du hältst den Schlüssel zu meinem Herzen. Pass gut darauf auf, denn es gibt keinen Ersatz. Unsere Geschichte wird in die Ewigkeit eingehen. Ich liebe dich, mehr als Worte jemals ausdrücken könnten."</p>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Vollbild">
+    </div>
+
+
+    <!-- =========================================
+         14. JAVASCRIPT LOGIK & MAGIE
+         ========================================= -->
+    <script>
+        /* --- 1. LOGIN PORTAL LOGIK --- */
+        function verify() {
+            const val = document.getElementById('pw-input').value.trim();
+            const box = document.getElementById('login-box');
+            const err = document.getElementById('err');
+            
+            // Base64 für "Raphi@2026"
+            if (btoa(val) === "UmFwaGlAMjAyNg==") {
+                // Erfolgreicher Login: Animation
+                box.style.transform = "scale(1.1)";
+                box.style.opacity = "0";
+                box.style.transition = "all 1s ease";
+                
+                setTimeout(() => {
+                    document.getElementById('login-overlay').style.opacity = '0';
+                    document.getElementById('login-overlay').style.visibility = 'hidden';
+                    
+                    setTimeout(() => {
+                        document.getElementById('login-overlay').style.display = 'none';
+                        document.getElementById('app').style.display = 'block';
+                        startMagic(); // Startet alle Effekte
+                    }, 1000);
+                }, 800);
+            } else {
+                // Falsches Passwort
+                box.classList.remove('shake');
+                void box.offsetWidth; // Trigger Reflow
+                box.classList.add('shake');
+                err.style.display = 'block';
+                document.getElementById('pw-input').value = ""; // Input leeren
+            }
+        }
+
+        // Enter Taste für Login
+        document.getElementById('pw-input').addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') verify();
+        });
+
+        /* --- 2. INITIALISIERUNG DER MAGIE --- */
+        function startMagic() {
+            initCanvas();
+            updateTimer();
+            setInterval(updateTimer, 1000);
+            initTiltEffect();
+            setTimeout(typeWriter, 1500); // Verzögert starten für Drama
+            initScrollObserver();
+            
+            // Versuch, Audio zu starten (falls ein hidden audio tag existieren würde)
+            // Wird meist von Browsern blockiert, daher der Spotify Button
+        }
+
+        /* --- 3. COUNTDOWN ENGINE --- */
+        function updateTimer() {
+            const target = new Date("July 27, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+            
+            if (diff > 0) {
+                document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            } else {
+                document.querySelector('.countdown-card').innerHTML = "<h2 style='font-size:clamp(3rem, 6vw, 6rem); text-align:center; font-family:var(--font-royal); margin:0; background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>WIR HABEN UNS! ❤️</h2>";
+            }
+        }
+
+        /* --- 4. TYPEWRITER EFFEKT --- */
+        const textToType = "Zwei Könige. Eine Liebe. Ewig.";
+        let i = 0;
+        function typeWriter() {
+            if (i < textToType.length) {
+                document.getElementById("tw-text").innerHTML += textToType.charAt(i);
+                i++;
+                // Zufällige Geschwindigkeit für menschliches Tippgefühl
+                let speed = Math.random() * 50 + 50; 
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        /* --- 5. 3D TILT EFFEKT (Neu geschrieben & weicher) --- */
+        function initTiltEffect() {
+            const cards = document.querySelectorAll('.tilt-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 Grad für Eleganz
+                    const rotateY = ((x - centerX) / centerX) * 10;
+                    
+                    // Weiche Transition entfernen während Bewegung
+                    card.style.transition = 'none';
+                    card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    // Transition wieder hinzufügen für weiches Zurücksetzen
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                    card.style.transform = `perspective(2000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        /* --- 6. SCROLL OBSERVER (Fade In beim Scrollen) --- */
+        function initScrollObserver() {
+            const observerOptions = {
+                threshold: 0.1, // 10% des Elements sichtbar
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        if (entry.target.classList.contains('timeline-item')) {
+                            entry.target.classList.add('visible');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        /* --- 7. LIEBESBRIEFE & LIGHTBOX (Modals) --- */
+        function openLetter(id) {
+            document.getElementById('modal-overlay').classList.add('active');
+            document.getElementById('letter-' + id).classList.add('active');
+        }
+
+        function closeLetter() {
+            document.getElementById('modal-overlay').classList.remove('active');
+            const letters = document.querySelectorAll('.letter-content');
+            letters.forEach(l => l.classList.remove('active'));
+        }
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Scrollen verhindern
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Scrollen erlauben
+        }
+
+        /* --- 8. BUCKETLIST TOGGLE --- */
+        function toggleDream(element) {
+            element.classList.toggle('done');
+            // Ein kleiner Partikel-Effekt beim Klicken könnte hier noch rein!
+            createClickSparkle(element);
+        }
+
+        function createClickSparkle(element) {
+            const rect = element.getBoundingClientRect();
+            for(let i=0; i<5; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                sparkle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+                sparkle.innerHTML = '✨';
+                sparkle.style.fontSize = '20px';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '9999';
+                sparkle.style.transition = 'all 1s ease-out';
+                document.body.appendChild(sparkle);
+                
+                // Animation frame um Transition zu triggern
+                requestAnimationFrame(() => {
+                    sparkle.style.transform = `translate(${(Math.random()-0.5)*100}px, ${(Math.random()-1)*100}px) scale(0)`;
+                    sparkle.style.opacity = '0';
+                });
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        }
+
+        /* --- 9. INTERAKTIVER CANVAS BACKGROUND (Sternenstaub & Herzen) --- */
+        function initCanvas() {
+            const canvas = document.getElementById('magic-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            
+            // Maus Position für Interaktion
+            let mouse = { x: null, y: null, radius: 150 };
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+            window.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Partikel Klasse
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 2 + 1; // 1 bis 3
+                    this.baseX = this.x;
+                    this.baseY = this.y;
+                    this.density = (Math.random() * 30) + 1;
+                    // Zufällige Rot/Gold Töne
+                    const colors = ['rgba(225, 29, 72, 0.8)', 'rgba(212, 175, 55, 0.8)', 'rgba(255, 255, 255, 0.5)'];
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.isHeart = Math.random() > 0.8; // 20% der Partikel sind winzige Herzen
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                }
+
+                draw() {
+                    ctx.fillStyle = this.color;
+                    if(this.isHeart) {
+                        // Zeichne ein Mini-Herz
+                        ctx.save();
+                        ctx.translate(this.x, this.y);
+                        ctx.scale(this.size * 0.5, this.size * 0.5);
+                        ctx.beginPath();
+                        ctx.moveTo(0, 0);
+                        ctx.bezierCurveTo(0, -3, -5, -3, -5, 0);
+                        ctx.bezierCurveTo(-5, 3, 0, 5, 0, 8);
+                        ctx.bezierCurveTo(0, 5, 5, 3, 5, 0);
+                        ctx.bezierCurveTo(5, -3, 0, -3, 0, 0);
+                        ctx.fill();
+                        ctx.restore();
+                    } else {
+                        // Zeichne Kreis
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.closePath();
+                        ctx.fill();
+                    }
+                }
+
+                update() {
+                    // Kontinuierliche Bewegung
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // Rand-Kollision (Wraparound)
+                    if(this.x > width) this.x = 0;
+                    if(this.x < 0) this.x = width;
+                    if(this.y > height) this.y = 0;
+                    if(this.y < 0) this.y = height;
+
+                    // Maus Interaktion (Push away & connect)
+                    if(mouse.x != null) {
+                        let dx = mouse.x - this.x;
+                        let dy = mouse.y - this.y;
+                        let distance = Math.sqrt(dx * dx + dy * dy);
+                        let forceDirectionX = dx / distance;
+                        let forceDirectionY = dy / distance;
+                        let maxDistance = mouse.radius;
+                        let force = (maxDistance - distance) / maxDistance;
+                        let directionX = forceDirectionX * force * this.density;
+                        let directionY = forceDirectionY * force * this.density;
+
+                        if (distance < mouse.radius) {
+                            this.x -= directionX;
+                            this.y -= directionY;
+                        } else {
+                            // Langsam zur Basis zurückkehren (optional, ich lasse sie lieber frei schweben)
+                        }
+                    }
+                }
+            }
+
+            // Array füllen
+            let particleArray = [];
+            // Anzahl abhängig von Bildschirmgröße, aber nicht zu viel um Performance zu schonen
+            const numberOfParticles = Math.floor((width * height) / 9000); 
+            for(let i = 0; i < numberOfParticles; i++) {
+                particleArray.push(new Particle());
+            }
+
+            // Animations-Loop
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                
+                for(let i = 0; i < particleArray.length; i++) {
+                    particleArray[i].update();
+                    particleArray[i].draw();
+                }
+                
+                connect(); // Verbinde nahe Partikel
+                requestAnimationFrame(animate);
+            }
+
+            // Verbinde Partikel mit Linien
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particleArray.length; a++) {
+                    for (let b = a; b < particleArray.length; b++) {
+                        let distance = ((particleArray[a].x - particleArray[b].x) * (particleArray[a].x - particleArray[b].x))
+                                     + ((particleArray[a].y - particleArray[b].y) * (particleArray[a].y - particleArray[b].y));
+                        
+                        // Wenn Partikel nah beieinander sind
+                        if (distance < (canvas.width/10) * (canvas.height/10)) {
+                            opacityValue = 1 - (distance / 10000);
+                            ctx.strokeStyle = `rgba(212, 175, 55, ${opacityValue * 0.2})`; // Goldene Fäden
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particleArray[a].x, particleArray[a].y);
+                            ctx.lineTo(particleArray[b].x, particleArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            animate();
+        }
+    </script>
+</body>
+</html>
